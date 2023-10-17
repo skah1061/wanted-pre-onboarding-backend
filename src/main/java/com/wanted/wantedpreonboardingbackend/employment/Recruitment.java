@@ -23,11 +23,11 @@ public class Recruitment extends TimeStamped {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   protected Long id;
 
-  @Column(name = "position", nullable = false)
+  @Column(name = "position")
   protected String position;
 
   @Column(name = "compensation")
-  protected Integer compensation;
+  protected String compensation;
 
   @Column(name = "skill")
   protected String skill;
@@ -45,5 +45,6 @@ public class Recruitment extends TimeStamped {
     this.compensation = requestDto.getCompensation();
     this.skill = requestDto.getSkill();
     this.description = requestDto.getDescription();
+    this.company = company;
   }
 }

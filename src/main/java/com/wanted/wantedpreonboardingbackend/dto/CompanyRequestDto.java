@@ -6,7 +6,7 @@ import lombok.Getter;
 public class CompanyRequestDto {
   private Long id;
   private String position;
-  private Integer compensation;
+  private String compensation;
   private String skill;
   private String description;
 

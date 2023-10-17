@@ -27,7 +27,7 @@ public class RecruitmentService {
     recruitmentRepository.save(recruitment);
   }
   else{
-    throw new IllegalArgumentException("해당 id의 회사가 없습니다.");
+    return new ApiResponseDto("해당 id가 없습니다.",400);
   }
 
     return new ApiResponseDto("채용공고 등록 성공", 201);
