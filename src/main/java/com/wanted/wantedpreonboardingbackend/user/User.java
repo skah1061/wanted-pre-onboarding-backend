@@ -11,6 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 @Entity
 @Getter
@@ -26,8 +27,5 @@ public class User extends TimeStamped {
 
   @Column(name = "password", nullable = false)
   private String password;
-  @Column(name = "role", nullable = false)
 
-  @Enumerated(value = EnumType.STRING)
-  private UserRoleEnum role;
 }
