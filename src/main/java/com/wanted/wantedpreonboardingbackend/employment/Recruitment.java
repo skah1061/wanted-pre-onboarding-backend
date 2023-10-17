@@ -1,9 +1,8 @@
 package com.wanted.wantedpreonboardingbackend.employment;
 
 import com.wanted.wantedpreonboardingbackend.company.Company;
-import com.wanted.wantedpreonboardingbackend.dto.CompanyRequestDto;
+import com.wanted.wantedpreonboardingbackend.dto.RecruitmentRequestDto;
 import com.wanted.wantedpreonboardingbackend.entity.TimeStamped;
-import com.wanted.wantedpreonboardingbackend.user.User;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -40,7 +39,7 @@ public class Recruitment extends TimeStamped {
   protected Company company;
 
 
-  public Recruitment(CompanyRequestDto requestDto, Company company){
+  public Recruitment(RecruitmentRequestDto requestDto, Company company){
     this.position = requestDto.getPosition();
     this.compensation = requestDto.getCompensation();
     this.skill = requestDto.getSkill();

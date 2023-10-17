@@ -3,7 +3,7 @@ package com.wanted.wantedpreonboardingbackend.dto;
 import lombok.Getter;
 
 @Getter
-public class CompanyRequestDto {
+public class RecruitmentRequestDto {
   private Long id;
   private String position;
   private String compensation;
