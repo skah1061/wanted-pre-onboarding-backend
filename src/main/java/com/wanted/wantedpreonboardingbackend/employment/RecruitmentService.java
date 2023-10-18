@@ -2,7 +2,9 @@ package com.wanted.wantedpreonboardingbackend.employment;
 
 import com.wanted.wantedpreonboardingbackend.company.Company;
 import com.wanted.wantedpreonboardingbackend.company.CompanyRepository;
+import com.wanted.wantedpreonboardingbackend.company.CompanyResponseDto;
 import com.wanted.wantedpreonboardingbackend.dto.ApiResponseDto;
+import com.wanted.wantedpreonboardingbackend.dto.RecruitmentDetailResponseDto;
 import com.wanted.wantedpreonboardingbackend.dto.RecruitmentRequestDto;
 import com.wanted.wantedpreonboardingbackend.dto.RecruitmentResponseDto;
 import java.util.List;
@@ -70,11 +72,20 @@ public class RecruitmentService {
     return new ApiResponseDto("채용공고 수정 완료",200);
   }
 
-  public RecruitmentResponseDto getDetailRecruitements(Long id) {
+  public RecruitmentDetailResponseDto getDetailRecruitements(Long id) {
 
     Optional<Recruitment> recruitment = recruitmentRepository.findById(id);
     if(recruitment.isPresent()) {
-      return new RecruitmentResponseDto(recruitment.get());
+
+
+      List<RecruitmentResponseDto> recruitmentResponseDtoList = recruitmentRepository.findAllByCompany(recruitment.get().getCompany())
+          .stream()
+          .map(RecruitmentResponseDto::new)
+          .toList();
+
+
+
+      return new RecruitmentDetailResponseDto(recruitment.get(),recruitmentResponseDtoList);
     }
     else{
       throw new IllegalArgumentException("해당 기업을 찾을 수 없음");

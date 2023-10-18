@@ -1,6 +1,7 @@
 package com.wanted.wantedpreonboardingbackend.employment;
 
 import com.wanted.wantedpreonboardingbackend.dto.ApiResponseDto;
+import com.wanted.wantedpreonboardingbackend.dto.RecruitmentDetailResponseDto;
 import com.wanted.wantedpreonboardingbackend.dto.RecruitmentRequestDto;
 import com.wanted.wantedpreonboardingbackend.dto.RecruitmentResponseDto;
 import java.util.List;
@@ -33,9 +34,9 @@ public class RecruitmentController {
 
   }
   @GetMapping("/{id}")
-  public RecruitmentResponseDto getDetailRecruitments(@PathVariable Long id){
+  public RecruitmentDetailResponseDto getDetailRecruitments(@PathVariable Long id){
 
-    RecruitmentResponseDto result = recruitmentService.getDetailRecruitements(id);
+    RecruitmentDetailResponseDto result = recruitmentService.getDetailRecruitements(id);
 
 
     return result;
