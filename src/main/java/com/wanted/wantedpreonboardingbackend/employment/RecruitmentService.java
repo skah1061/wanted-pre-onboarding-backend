@@ -35,9 +35,6 @@ public class RecruitmentService {
   }
 
   public List<RecruitmentResponseDto> getRecruitements() {
-
-
-
     return recruitmentRepository.findAll()
         .stream()
         .map(RecruitmentResponseDto::new)
@@ -65,7 +62,6 @@ public class RecruitmentService {
     else{
       return new ApiResponseDto("해당 채용공고가 존재하지 않습니다.",400);
     }
-
     return new ApiResponseDto("채용공고 수정 완료",200);
   }
 

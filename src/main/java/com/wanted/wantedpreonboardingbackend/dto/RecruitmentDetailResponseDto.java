@@ -1,7 +1,5 @@
 package com.wanted.wantedpreonboardingbackend.dto;
 
-import com.wanted.wantedpreonboardingbackend.company.Company;
-import com.wanted.wantedpreonboardingbackend.company.CompanyResponseDto;
 import com.wanted.wantedpreonboardingbackend.employment.Recruitment;
 import java.util.List;
 import lombok.Getter;
@@ -18,7 +16,6 @@ public class RecruitmentDetailResponseDto {
   private String skill;
   private String description;
   private List<RecruitmentResponseDto> recruitmentResponseDtoList;
-
 
   public RecruitmentDetailResponseDto(Recruitment recruitment, List<RecruitmentResponseDto> recruitmentResponseDtoList){
     this.id = recruitment.getId();

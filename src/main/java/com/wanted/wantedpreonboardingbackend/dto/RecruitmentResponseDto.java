@@ -14,7 +14,6 @@ public class RecruitmentResponseDto {
   private String compensation;
   private String skill;
 
-
   public RecruitmentResponseDto(Recruitment recruitment){
     this.id = recruitment.getId();
     this.companyName = recruitment.getCompany().getName();

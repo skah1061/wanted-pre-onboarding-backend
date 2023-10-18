@@ -3,7 +3,6 @@ package com.wanted.wantedpreonboardingbackend.employment;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Repository;
 
 @RequiredArgsConstructor

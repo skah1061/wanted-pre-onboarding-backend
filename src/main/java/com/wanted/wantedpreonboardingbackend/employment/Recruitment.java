@@ -40,7 +40,6 @@ public class Recruitment extends TimeStamped {
   @JoinColumn(name = "company_id")
   protected Company company;
 
-
   public Recruitment(RecruitmentRequestDto requestDto, Company company){
     this.position = requestDto.getPosition();
     this.compensation = requestDto.getCompensation();
@@ -48,7 +47,6 @@ public class Recruitment extends TimeStamped {
     this.description = requestDto.getDescription();
     this.company = company;
   }
-
   public void update(RecruitmentRequestDto requestDto) {
     this.position = requestDto.getPosition();
     this.compensation = requestDto.getCompensation();

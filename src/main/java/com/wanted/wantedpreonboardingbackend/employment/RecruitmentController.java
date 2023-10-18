@@ -28,18 +28,13 @@ public class RecruitmentController {
   public ResponseEntity<ApiResponseDto> createRecruitment(
       @RequestBody RecruitmentRequestDto requestDto){
 
-    ApiResponseDto result = recruitmentService.createRecruitment(requestDto);
-
-
+      ApiResponseDto result = recruitmentService.createRecruitment(requestDto);
       return ResponseEntity.status(HttpStatus.CREATED).body(result);
 
   }
   @GetMapping("/{id}")
   public RecruitmentDetailResponseDto getDetailRecruitments(@PathVariable Long id){
-
     RecruitmentDetailResponseDto result = recruitmentService.getDetailRecruitements(id);
-
-
     return result;
   }
   @GetMapping("/search")
@@ -67,6 +62,4 @@ public class RecruitmentController {
     ApiResponseDto result = recruitmentService.updateRecruitment(id,requestDto);
     return ResponseEntity.status(HttpStatus.OK).body(result);
   }
-
-
 }
