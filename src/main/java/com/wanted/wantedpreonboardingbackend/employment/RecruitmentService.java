@@ -69,4 +69,15 @@ public class RecruitmentService {
 
     return new ApiResponseDto("채용공고 수정 완료",200);
   }
+
+  public RecruitmentResponseDto getDetailRecruitements(Long id) {
+
+    Optional<Recruitment> recruitment = recruitmentRepository.findById(id);
+    if(recruitment.isPresent()) {
+      return new RecruitmentResponseDto(recruitment.get());
+    }
+    else{
+      throw new IllegalArgumentException("해당 기업을 찾을 수 없음");
+    }
+  }
 }

@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
+import java.util.Optional;
 
 @Entity
 public class UserRecruitment {
@@ -24,4 +25,8 @@ public class UserRecruitment {
   private Recruitment recruitment;
 
 
+  public UserRecruitment(User user, Recruitment recruitment) {
+    this.user = user;
+    this.recruitment = recruitment;
+  }
 }
