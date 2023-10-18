@@ -7,8 +7,10 @@ import com.wanted.wantedpreonboardingbackend.dto.RecruitmentRequestDto;
 import com.wanted.wantedpreonboardingbackend.dto.RecruitmentResponseDto;
 import java.util.List;
 import java.util.Optional;
+import java.util.OptionalInt;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -41,5 +43,30 @@ public class RecruitmentService {
         .stream()
         .map(RecruitmentResponseDto::new)
         .toList();
+  }
+
+  public ApiResponseDto deleteRecruitment(Long id) {
+
+    Optional<Recruitment> recruitment = recruitmentRepository.findById(id);
+    if(recruitment.isPresent()){
+      recruitmentRepository.delete(recruitment.get());
+    }
+    else{
+      return new ApiResponseDto("해당 채용공고가 존재하지 않습니다.",400);
+    }
+    return new ApiResponseDto("채용공고 삭제 완료",200);
+  }
+  @Transactional
+  public ApiResponseDto updateRecruitment(Long id , RecruitmentRequestDto requestDto){
+
+    Optional<Recruitment> recruitment = recruitmentRepository.findById(id);
+    if(recruitment.isPresent()){
+      recruitment.get().update(requestDto);
+    }
+    else{
+      return new ApiResponseDto("해당 채용공고가 존재하지 않습니다.",400);
+    }
+
+    return new ApiResponseDto("채용공고 수정 완료",200);
   }
 }

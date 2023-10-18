@@ -13,9 +13,11 @@ import jakarta.persistence.ManyToOne;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
 @RequiredArgsConstructor
+@DynamicUpdate
 @Getter
 public class Recruitment extends TimeStamped {
   @Id
@@ -45,5 +47,12 @@ public class Recruitment extends TimeStamped {
     this.skill = requestDto.getSkill();
     this.description = requestDto.getDescription();
     this.company = company;
+  }
+
+  public void update(RecruitmentRequestDto requestDto) {
+    this.position = requestDto.getPosition();
+    this.compensation = requestDto.getCompensation();
+    this.skill = requestDto.getSkill();
+    this.description = requestDto.getDescription();
   }
 }
