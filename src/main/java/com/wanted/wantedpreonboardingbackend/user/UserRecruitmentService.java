@@ -2,8 +2,7 @@ package com.wanted.wantedpreonboardingbackend.user;
 
 import com.wanted.wantedpreonboardingbackend.dto.ApiResponseDto;
 import com.wanted.wantedpreonboardingbackend.employment.Recruitment;
-import com.wanted.wantedpreonboardingbackend.employment.RecruitmentRepository;
-import com.wanted.wantedpreonboardingbackend.employment.RecruitmentService;
+import com.wanted.wantedpreonboardingbackend.employment.RecruitmentRepositoryImpl;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserRecruitmentService {
   private final UserRepository userRepository;
-  private final RecruitmentRepository recruitmentRepository;
+  private final RecruitmentRepositoryImpl recruitmentRepository;
   private final UserRecruitmentRepository userRecruitmentRepository;
 
   public ApiResponseDto submit(Long companyId, Long userId) {

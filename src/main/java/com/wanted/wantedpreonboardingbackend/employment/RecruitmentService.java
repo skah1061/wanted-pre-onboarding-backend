@@ -2,14 +2,12 @@ package com.wanted.wantedpreonboardingbackend.employment;
 
 import com.wanted.wantedpreonboardingbackend.company.Company;
 import com.wanted.wantedpreonboardingbackend.company.CompanyRepository;
-import com.wanted.wantedpreonboardingbackend.company.CompanyResponseDto;
 import com.wanted.wantedpreonboardingbackend.dto.ApiResponseDto;
 import com.wanted.wantedpreonboardingbackend.dto.RecruitmentDetailResponseDto;
 import com.wanted.wantedpreonboardingbackend.dto.RecruitmentRequestDto;
 import com.wanted.wantedpreonboardingbackend.dto.RecruitmentResponseDto;
 import java.util.List;
 import java.util.Optional;
-import java.util.OptionalInt;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,8 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class RecruitmentService {
 
   private final CompanyRepository companyRepository;
-  private final RecruitmentRepository recruitmentRepository;
-
+  private final RecruitmentRepositoryImpl recruitmentRepository;
 
   public ApiResponseDto createRecruitment(RecruitmentRequestDto requestDto){
   Optional<Company> company = companyRepository.findById(requestDto.getId());
@@ -77,18 +74,24 @@ public class RecruitmentService {
     Optional<Recruitment> recruitment = recruitmentRepository.findById(id);
     if(recruitment.isPresent()) {
 
-
       List<RecruitmentResponseDto> recruitmentResponseDtoList = recruitmentRepository.findAllByCompany(recruitment.get().getCompany())
           .stream()
+          .filter(e -> !e.getId().equals(id))
           .map(RecruitmentResponseDto::new)
           .toList();
-
-
 
       return new RecruitmentDetailResponseDto(recruitment.get(),recruitmentResponseDtoList);
     }
     else{
       throw new IllegalArgumentException("해당 기업을 찾을 수 없음");
     }
+  }
+
+  public List<RecruitmentResponseDto> searchRecruitments(String keyword) {
+
+    return recruitmentRepository.searchKeywordRecruitment(keyword)
+        .stream()
+        .map(RecruitmentResponseDto::new)
+        .toList();
   }
 }

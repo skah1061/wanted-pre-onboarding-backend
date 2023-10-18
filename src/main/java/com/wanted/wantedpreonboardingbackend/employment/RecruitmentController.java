@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -41,12 +42,17 @@ public class RecruitmentController {
 
     return result;
   }
+  @GetMapping("/search")
+  public List<RecruitmentResponseDto> searchRecruitments(
+      @RequestParam(value = "keyword") String keyword
+  ){
+    return recruitmentService.searchRecruitments(keyword);
+  }
+
   @GetMapping
   public List<RecruitmentResponseDto> getRecruitments(){
 
     List<RecruitmentResponseDto> result = recruitmentService.getRecruitements();
-
-
     return result;
   }
   @DeleteMapping("/{id}")
